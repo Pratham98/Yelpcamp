@@ -1,0 +1,152 @@
+<% include ../partials/header %>
+<style>
+body {
+    background: #0A8204;
+}
+
+a {
+    color: white;
+}
+.navbar-default {
+    margin-bottom: 0;
+    margin-top: 0;
+    border-radius: 0;
+    padding: 15px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #0A8204;
+    font-size: 1.2em;
+}
+
+.navbar-default .navbar-brand {
+    font-size: 2em;
+    color: #0A8204;
+}
+
+header {
+    height: 20%;
+}
+
+.jumbotron {
+    background: url(http://i.imgur.com/TVGe0Ef.jpg);
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 0;
+    height: 20%;
+    text-align: center;
+    color: white;
+}
+
+.jumbotron div {
+    margin-top: 15%;
+    margin-bottom: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: rgba(10, 130, 4, .6);
+}
+
+.row.text-center {
+    margin-top: 5%;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+    padding-bottom: 5px;
+    border: none;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 
+                0 4px 25px 0px rgba(0, 0, 0, 0.12), 
+                0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+.gallery img {
+    width: auto;
+}
+
+.form {
+    text-align: center;
+    width: 50%;
+}
+
+.form-control {
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+section {
+    background: white;
+    margin-top: 0;
+}
+
+section h1 {
+    text-align: center;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 5%;
+    padding: 15px;
+}
+
+#footer a {
+    color: white;
+}
+
+#delete-form {
+    display: inline;
+}
+
+@media screen and (min-width: 996px) {
+    .gallery img {
+        height: 200px;
+        width: auto;
+    }
+}
+</style>
+<div class="container">
+</div>
+    <header class="jumbotron">
+        <div>
+            <h1>Welcome to Yelpcamp!</h1>
+            <p>View our hand-picked campgrounds from all over the world</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/campgrounds/new">Add a new campground</a>
+            </p>
+        </div>
+    </header>
+    <div class="container">
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+
+        <% campgrounds.forEach(function(campground){ %>
+        <div class="col-md-3 col-sm-6">
+            <div class="img-thumbnail">
+                <img width="100%" src="<%= campground.image %>" alt="">
+                <div class="caption">
+                    <h4><%= campground.name %></h4>
+                </div>
+                <p>
+                    <a href="/campgrounds/<%= campground._id%>" class="btn btn-primary">More info</a>
+                </p>
+            </div>
+        </div>
+
+        <% }) %>
+    </div>
+</div>
+
+<% include ../partials/footer %>
